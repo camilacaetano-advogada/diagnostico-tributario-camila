@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico Fiscal | Camila Arcanjo Advocacia</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --vinho: #4A0E1A;
+    --vinho-escuro: #2A0008;
+    --vinho-medio: #6B1525;
+    --creme: #F5F0E8;
+    --dourado: #C9A84C;
+    --dourado-claro: #E2C97E;
+    --cinza: #9A9080;
+    --texto: #D4CFC7;
+    --fundo: #1A0408;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--fundo);
+    color: var(--creme);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Textura de fundo */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 3px,
+        rgba(245,240,232,0.012) 3px,
+        rgba(245,240,232,0.012) 4px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    background: rgba(26,4,8,0.92);
+    backdrop-filter: blur(12px);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-monogram {
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--dourado);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dourado);
+    letter-spacing: 2px;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-nome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--creme);
+    letter-spacing: 1px;
+  }
+
+  .logo-sub {
+    font-size: 10px;
+    color: var(--dourado);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  .header-tag {
+    font-size: 10px;
+    color: var(--cinza);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 6px 14px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-inner {
+    max-width: 680px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--dourado);
+    opacity: 0.5;
+  }
+
+  .hero-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 6vw, 58px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--creme);
+    margin-bottom: 12px;
+  }
+
+  .hero-titulo em {
+    font-style: italic;
+    color: var(--dourado);
+  }
+
+  .hero-subtitulo {
+    font-size: 15px;
+    color: var(--cinza);
+    line-height: 1.7;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--dourado);
+    color: var(--vinho-escuro);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .hero-cta:hover {
+    background: var(--dourado-claro);
+    transform: translateY(-1px);
+  }
+
+  .hero-nota {
+    margin-top: 20px;
+    font-size: 11px;
+    color: var(--cinza);
+    opacity: 0.6;
+    letter-spacing: 0.5px;
+  }
+
+  /* FORMULÁRIO PRINCIPAL */
+  .quiz-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ETAPAS */
+  .etapa {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .etapa.ativa {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Indicador de progresso */
+  .progresso {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 56px;
+  }
+
+  .progresso-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+  }
+
+  .progresso-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    width: 100%;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+    z-index: 0;
+  }
+
+  .progresso-item.concluida:not(:last-child)::after {
+    background: rgba(201,168,76,0.5);
+  }
+
+  .progresso-num {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--cinza);
+    position: relative;
+    z-index: 1;
+    background: var(--fundo);
+    transition: all 0.3s;
+  }
+
+  .progresso-item.ativa .progresso-num {
+    border-color: var(--dourado);
+    color: var(--dourado);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .progresso-item.concluida .progresso-num {
+    border-color: var(--dourado);
+    background: var(--dourado);
+    color: var(--vinho-escuro);
+    font-weight: 500;
+  }
+
+  .progresso-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cinza);
+    margin-top: 8px;
+    opacity: 0.5;
+    text-align: center;
+  }
+
+  .progresso-item.ativa .progresso-label {
+    color: var(--dourado);
+    opacity: 0.8;
+  }
+
+  /* Títulos de etapa */
+  .etapa-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+
+  .etapa-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    color: var(--creme);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .etapa-desc {
+    font-size: 14px;
+    color: var(--cinza);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  /* Linha separadora */
+  .divisor {
+    width: 60px;
+    height: 1px;
+    background: var(--dourado);
+    opacity: 0.4;
+    margin-bottom: 40px;
+  }
+
+  /* CAMPOS DE TEXTO */
+  .campo-grupo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .campo-grupo.full { grid-template-columns: 1fr; }
+
+  .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .campo label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    opacity: 0.7;
+  }
+
+  .campo input, .campo select {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    padding: 12px 0;
+    color: var(--creme);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .campo input::placeholder { color: rgba(245,240,232,0.2); font-size: 14px; }
+
+  .campo input:focus, .campo select:focus {
+    border-bottom-color: var(--dourado);
+  }
+
+  .campo select {
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+
+  .campo select option {
+    background: var(--vinho-escuro);
+    color: var(--creme);
+  }
+
+  /* CHECKBOXES E RADIOS */
+  .opcoes-grid {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .opcoes-grid.dois { grid-template-columns: 1fr 1fr; }
+
+  .opcao-item {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .opcao-item input[type="checkbox"],
+  .opcao-item input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .opcao-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 20px;
+    border: 1px solid rgba(201,168,76,0.18);
+    cursor: pointer;
+    transition: all 0.2s;
+    background: rgba(255,255,255,0.01);
+  }
+
+  .opcao-label:hover {
+    border-color: rgba(201,168,76,0.4);
+    background: rgba(201,168,76,0.04);
+  }
+
+  .opcao-item input:checked + .opcao-label {
+    border-color: var(--dourado);
+    background: rgba(201,168,76,0.07);
+  }
+
+  .opcao-box {
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(201,168,76,0.35);
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .opcao-item input:checked + .opcao-label .opcao-box {
+    background: var(--dourado);
+    border-color: var(--dourado);
+  }
+
+  .opcao-item input:checked + .opcao-label .opcao-box::after {
+    content: '✓';
+    font-size: 11px;
+    color: var(--vinho-escuro);
+    font-weight: 700;
+  }
+
+  .opcao-radio .opcao-box {
+    border-radius: 50%;
+  }
+
+  .opcao-item input[type="radio"]:checked + .opcao-label .opcao-box::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--vinho-escuro);
+    border-radius: 50%;
+  }
+
+  .opcao-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .opcao-nome {
+    font-size: 14px;
+    color: var(--creme);
+    font-weight: 400;
+  }
+
+  .opcao-sub {
+    font-size: 12px;
+    color: var(--cinza);
+    opacity: 0.7;
+    line-height: 1.5;
+  }
+
+  /* BLOCO CONDICIONAL */
+  .bloco-condicional {
+    display: none;
+    padding: 24px;
+    border-left: 2px solid rgba(201,168,76,0.3);
+    margin-bottom: 20px;
+    background: rgba(201,168,76,0.03);
+  }
+
+  .bloco-condicional.visivel { display: block; }
+
+  .bloco-titulo {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    margin-bottom: 16px;
+    opacity: 0.7;
+  }
+
+  /* ALERTA DE DESTAQUE */
+  .alerta {
+    padding: 20px 24px;
+    border: 1px solid rgba(201,168,76,0.25);
+    background: rgba(201,168,76,0.05);
+    margin-bottom: 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .alerta-icone {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .alerta-texto {
+    font-size: 13px;
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .alerta-texto strong {
+    color: var(--dourado);
+    font-weight: 500;
+  }
+
+  /* BOTÕES */
+  .btn-primario {
+    background: var(--dourado);
+    color: var(--vinho-escuro);
+    border: none;
+    padding: 16px 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  .btn-primario:hover {
+    background: var(--dourado-claro);
+    transform: translateY(-1px);
+  }
+
+  .btn-primario:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-secundario {
+    background: transparent;
+    color: var(--cinza);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 14px 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 12px;
+    width: 100%;
+  }
+
+  .btn-secundario:hover {
+    border-color: rgba(201,168,76,0.4);
+    color: var(--creme);
+  }
+
+  /* RESULTADO */
+  .resultado-container {
+    text-align: center;
+    padding: 60px 0;
+  }
+
+  .resultado-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    border: 1px solid;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .resultado-badge.positivo {
+    border-color: var(--dourado);
+    color: var(--dourado);
+    background: rgba(201,168,76,0.06);
+  }
+
+  .resultado-badge.negativo {
+    border-color: rgba(154,144,128,0.4);
+    color: var(--cinza);
+    background: rgba(154,144,128,0.04);
+  }
+
+  .resultado-badge.parcial {
+    border-color: rgba(201,168,76,0.5);
+    color: var(--dourado-claro);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .resultado-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    color: var(--creme);
+  }
+
+  .resultado-titulo em { color: var(--dourado); font-style: italic; }
+
+  .resultado-desc {
+    font-size: 15px;
+    color: var(--cinza);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* RELATÓRIO */
+  .relatorio {
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 36px;
+    margin-bottom: 32px;
+    text-align: left;
+  }
+
+  .relatorio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .relatorio-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--creme);
+  }
+
+  .relatorio-data {
+    font-size: 11px;
+    color: var(--cinza);
+    letter-spacing: 1px;
+    opacity: 0.6;
+  }
+
+  .relatorio-secao {
+    margin-bottom: 24px;
+  }
+
+  .relatorio-secao-titulo {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+
+  .relatorio-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+    font-size: 13px;
+  }
+
+  .relatorio-linha:last-child { border-bottom: none; }
+
+  .relatorio-chave { color: var(--cinza); }
+
+  .relatorio-valor {
+    color: var(--creme);
+    font-weight: 400;
+    text-align: right;
+  }
+
+  .relatorio-valor.destaque {
+    color: var(--dourado);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .status-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .status-tag.alto { background: rgba(201,168,76,0.15); color: var(--dourado); }
+  .status-tag.medio { background: rgba(201,168,76,0.08); color: var(--dourado-claro); }
+  .status-tag.baixo { background: rgba(154,144,128,0.1); color: var(--cinza); }
+
+  /* ITEM DE ANÁLISE */
+  .analise-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+  }
+
+  .analise-item:last-child { border-bottom: none; }
+
+  .analise-icone {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .analise-texto { flex: 1; }
+
+  .analise-titulo-item {
+    font-size: 13px;
+    color: var(--creme);
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .analise-sub {
+    font-size: 12px;
+    color: var(--cinza);
+    line-height: 1.6;
+  }
+
+  /* BTN WHATSAPP */
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--dourado);
+    color: var(--vinho-escuro);
+    padding: 18px 48px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    width: 100%;
+  }
+
+  .btn-whatsapp:hover {
+    background: var(--dourado-claro);
+    transform: translateY(-1px);
+  }
+
+  .btn-reiniciar {
+    background: transparent;
+    color: var(--cinza);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 14px 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .btn-reiniciar:hover {
+    border-color: rgba(201,168,76,0.3);
+    color: var(--creme);
+  }
+
+  /* NOTA LEGAL */
+  .nota-legal {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    font-size: 11px;
+    color: var(--cinza);
+    opacity: 0.5;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-nome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--creme);
+    opacity: 0.5;
+  }
+
+  .footer-oab {
+    font-size: 10px;
+    color: var(--cinza);
+    letter-spacing: 1.5px;
+    opacity: 0.4;
+    text-transform: uppercase;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    header { padding: 16px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .quiz-container { padding: 60px 20px; }
+    .campo-grupo { grid-template-columns: 1fr; }
+    .opcoes-grid.dois { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+    .relatorio-header { flex-direction: column; gap: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .etapa { animation: none; }
+    .btn-primario:hover, .btn-whatsapp:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-monogram">CA</div>
+    <div class="logo-text">
+      <span class="logo-nome">Camila Arcanjo</span>
+      <span class="logo-sub">Advocacia e Consultoria</span>
+    </div>
+  </div>
+  <div class="header-tag">Diagnóstico Fiscal</div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Mapeamento Previdenciário</div>
+    <h1 class="hero-titulo">
+      Descubra se você tem<br>
+      <em>valores a recuperar</em><br>
+      da Receita Federal.
+    </h1>
+    <p class="hero-subtitulo">
+      Médicos plantonistas com mais de um vínculo empregatício frequentemente têm INSS retido além do teto legal. O diagnóstico leva menos de 3 minutos e indica se existe hipótese jurídica a ser avaliada no seu caso.
+    </p>
+    <button class="hero-cta" onclick="iniciarQuiz()">Iniciar diagnóstico gratuito</button>
+    <p class="hero-nota">Informações tratadas com sigilo. Sem compromisso.</p>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz-container" id="quiz" style="display:none;">
+
+  <!-- PROGRESSO -->
+  <div class="progresso" id="progresso">
+    <div class="progresso-item ativa" id="prog-1">
+      <div class="progresso-num">1</div>
+      <div class="progresso-label">Identificação</div>
+    </div>
+    <div class="progresso-item" id="prog-2">
+      <div class="progresso-num">2</div>
+      <div class="progresso-label">Vínculos</div>
+    </div>
+    <div class="progresso-item" id="prog-3">
+      <div class="progresso-num">3</div>
+      <div class="progresso-label">Detalhes</div>
+    </div>
+    <div class="progresso-item" id="prog-4">
+      <div class="progresso-num">4</div>
+      <div class="progresso-label">Tempo</div>
+    </div>
+    <div class="progresso-item" id="prog-5">
+      <div class="progresso-num">5</div>
+      <div class="progresso-label">Resultado</div>
+    </div>
+  </div>
+
+  <!-- ETAPA 1: IDENTIFICAÇÃO -->
+  <div class="etapa ativa" id="etapa-1">
+    <div class="etapa-eyebrow">Etapa 01 de 04</div>
+    <h2 class="etapa-titulo">Antes de começar, precisamos te identificar.</h2>
+    <p class="etapa-desc">Seus dados são sigilosos e usados exclusivamente para gerar seu relatório personalizado.</p>
+    <div class="divisor"></div>
+
+    <div class="campo-grupo">
+      <div class="campo">
+        <label>Nome completo</label>
+        <input type="text" id="nome" placeholder="Dr. João Silva">
+      </div>
+      <div class="campo">
+        <label>CRM</label>
+        <input type="text" id="crm" placeholder="CRM/SP 123456">
+      </div>
+    </div>
+    <div class="campo-grupo">
+      <div class="campo">
+        <label>Especialidade</label>
+        <input type="text" id="especialidade" placeholder="Clínica Geral, Emergência...">
+      </div>
+      <div class="campo">
+        <label>Estado de atuação</label>
+        <select id="estado">
+          <option value="" disabled selected>Selecione</option>
+          <option>SP</option><option>RJ</option><option>MG</option>
+          <option>DF</option><option>RS</option><option>PR</option>
+          <option>BA</option><option>CE</option><option>PE</option>
+          <option>Outro</option>
+        </select>
+      </div>
+    </div>
+    <div class="campo-grupo full">
+      <div class="campo">
+        <label>WhatsApp</label>
+        <input type="tel" id="whatsapp" placeholder="(11) 99999-9999">
+      </div>
+    </div>
+    <div class="campo-grupo full">
+      <div class="campo">
+        <label>E-mail</label>
+        <input type="email" id="email" placeholder="seu@email.com">
+      </div>
+    </div>
+
+    <button class="btn-primario" onclick="irParaEtapa(2)">Continuar</button>
+  </div>
+
+  <!-- ETAPA 2: VÍNCULOS -->
+  <div class="etapa" id="etapa-2">
+    <div class="etapa-eyebrow">Etapa 02 de 04</div>
+    <h2 class="etapa-titulo">Como você atua profissionalmente hoje?</h2>
+    <p class="etapa-desc">Selecione todos os tipos de vínculo que se aplicam ao seu caso. Você pode marcar mais de um.</p>
+    <div class="divisor"></div>
+
+    <div class="opcoes-grid" id="vinculos">
+      <label class="opcao-item">
+        <input type="checkbox" name="vinculo" value="clt">
+        <div class="opcao-label">
+          <div class="opcao-box"></div>
+          <div class="opcao-texto">
+            <span class="opcao-nome">CLT</span>
+            <span class="opcao-sub">Hospital público ou privado, UPA, Fundação</span>
+          </div>
+        </div>
+      </label>
+      <label class="opcao-item">
+        <input type="checkbox" name="vinculo" value="cooperativa">
+        <div class="opcao-label">
+          <div class="opcao-box"></div>
+          <div class="opcao-texto">
+            <span class="opcao-nome">Cooperativa médica</span>
+            <span class="opcao-sub">Unimed e similares</span>
+          </div>
+        </div>
+      </label>
+      <label class="opcao-item">
+        <input type="checkbox" name="vinculo" value="pj">
+        <div class="opcao-label">
+          <div class="opcao-box"></div>
+          <div class="opcao-texto">
+            <span class="opcao-nome">Pessoa Jurídica própria</span>
+            <span class="opcao-sub">PJ, emissão de notas fiscais</span>
+          </div>
+        </div>
+      </label>
+      <label class="opcao-item">
+        <input type="checkbox" name="vinculo" value="concurso">
+        <div class="opcao-label">
+          <div class="opcao-box"></div>
+          <div class="opcao-texto">
+            <span class="opcao-nome">Concurso público</span>
+            <span class="opcao-sub">Regime próprio (RPPS)</span>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <button class="btn-primario" onclick="irParaEtapa(3)">Continuar</button>
+    <button class="btn-secundario" onclick="irParaEtapa(1)">Voltar</button>
+  </div>
+
+  <!-- ETAPA 3: DETALHES CONDICIONAIS -->
+  <div class="etapa" id="etapa-3">
+    <div class="etapa-eyebrow">Etapa 03 de 04</div>
+    <h2 class="etapa-titulo">Agora vamos detalhar cada vínculo.</h2>
+    <p class="etapa-desc">As perguntas abaixo aparecem de acordo com o que você selecionou.</p>
+    <div class="divisor"></div>
+
+    <!-- CLT -->
+    <div class="bloco-condicional" id="bloco-clt">
+      <div class="bloco-titulo">Vínculos CLT</div>
+      <p style="font-size:13px;color:var(--cinza);margin-bottom:16px;">Em quantos hospitais ou instituições você possui vínculo CLT simultâneo?</p>
+      <div class="opcoes-grid dois">
+        <label class="opcao-item opcao-radio">
+          <input type="radio" name="qtd_clt" value="1">
+          <div class="opcao-label">
+            <div class="opcao-box"></div>
+            <div class="opcao-texto"><span class="opcao-nome">1 vínculo</span></div>
+          </div>
+        </label>
+        <label class="opcao-item opcao-radio">
+          <input type="radio" name="qtd_clt" value="2">
+          <div class="opcao-label">
+            <div class="opcao-box"></div>
+            <div class="opcao-texto"><span class="opcao-nome">2 vínculos</span></div>
+          </div>
+        </label>
+        <label class="opcao-item opcao-radio">
+          <input type="radio" name="qtd_clt" value="3+">
+          <div class="opcao-label">
+            <div class="opcao-box"></div>
+            <div class="opcao-texto"><span class="opcao-nome">3 ou mais vínculos</span></div>
+          </div>
+        </label>
+      </div>
+      <p style="font-size:13px;color:var(--cinza);margin-bottom:16px;margin-top:8px;">A soma dos salários brutos nesses vínculos ultrapassa R$ 8.000,00 mensais?</p>
+      <div class="opcoes-grid dois">
+        <label class="opcao-item opcao-radio">
+          <input type="radio" name="teto_clt" value="sim">
+          <div class="opcao-label">
+            <div class="opcao-box"></div>
+            <div class="opcao-texto"><span class="opcao-nome">Sim</span></div>
+          </div>
+        </label>
+        <label class="opcao-item opcao-radio">
+          <input type="radio" name="teto_clt" value="nao">
+          <div class="opcao-label">
+            <div class="opcao-box"></div>
+            <div class="opcao-texto"><span class="opcao-nome">Não tenho certeza</span></div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- COOPERATIVA -->
+    <div class="bloco-condicional" id="bloco-coop">
+      <div class="bloco-titulo">Cooperativa médica</div>
+      <p style="font-size:13px;color:var(--cinza);margin-bottom:16px;">Como você recebe os repasses da cooperativa?</p>
+      <div class="opcoes-grid">
+        <label class="opcao-item opcao-radio">
+          <input type="radio" name="coop_forma" value="pf">
+          <div class="opcao-label">
+            <div class="opcao-box"></div>
+            <div class="opcao-texto">
+              <span class="opcao-nome">Como Pessoa Física</span>
+              <span class="opcao-sub">Retenção de 20% no CPF</span>
+            </div>
+          </div>
+        </label>
+        <label class="opcao-item opcao-radio">
+          <input type="radio" name="coop_forma" value="pj">
+          <div class="opcao-label">
+            <div class="opcao-box"></div>
+            <div class="opcao-texto">
+              <span class="opcao-nome">Através da minha PJ</span>
+              <span class="opcao-sub">Emissão de nota da minha clínica</span>
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- PJ -->
+    <div class="bloco-condicional" id="bloco-pj">
+      <div class="bloco-titulo">Pessoa Jurídica própria</div>
+      <p style="font-size:13px;color:var(--cinza);margin-bottom:16px;">Além da PJ, você possui algum vínculo CLT ou concurso público que desconte INSS?</p>
+      <div class="opcoes-grid dois">
+        <label class="opcao-item opcao-radio">
+          <input type="radio" name="pj_clt" value="sim">
+          <div class="opcao-label">
+            <div class="opcao-box"></div>
+            <div class="opcao-texto"><span class="opcao-nome">Sim</span></div>
+          </div>
+        </label>
+        <label class="opcao-item opcao-radio">
+          <input type="radio" name="pj_clt" value="nao">
+          <div class="opcao-label">
+            <div class="opcao-box"></div>
+            <div class="opcao-texto"><span class="opcao-nome">Não</span></div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <button class="btn-primario" onclick="irParaEtapa(4)">Continuar</button>
+    <button class="btn-secundario" onclick="irParaEtapa(2)">Voltar</button>
+  </div>
+
+  <!-- ETAPA 4: TEMPO -->
+  <div class="etapa" id="etapa-4">
+    <div class="etapa-eyebrow">Etapa 04 de 04</div>
+    <h2 class="etapa-titulo">Há quanto tempo você mantém essa rotina de vínculos?</h2>
+    <p class="etapa-desc">O prazo de restituição previsto em lei é de até 5 anos retroativos. Essa informação define o alcance da análise.</p>
+    <div class="divisor"></div>
+
+    <div class="opcoes-grid">
+      <label class="opcao-item opcao-radio">
+        <input type="radio" name="tempo" value="menos1">
+        <div class="opcao-label">
+          <div class="opcao-box"></div>
+          <div class="opcao-texto">
+            <span class="opcao-nome">Menos de 1 ano</span>
+            <span class="opcao-sub">Possível análise a partir dos primeiros meses</span>
+          </div>
+        </div>
+      </label>
+      <label class="opcao-item opcao-radio">
+        <input type="radio" name="tempo" value="1a3">
+        <div class="opcao-label">
+          <div class="opcao-box"></div>
+          <div class="opcao-texto">
+            <span class="opcao-nome">Entre 1 e 3 anos</span>
+            <span class="opcao-sub">Janela relevante de análise</span>
+          </div>
+        </div>
+      </label>
+      <label class="opcao-item opcao-radio">
+        <input type="radio" name="tempo" value="3a5">
+        <div class="opcao-label">
+          <div class="opcao-box"></div>
+          <div class="opcao-texto">
+            <span class="opcao-nome">Entre 3 e 5 anos</span>
+            <span class="opcao-sub">Potencial de análise ampliado</span>
+          </div>
+        </div>
+      </label>
+      <label class="opcao-item opcao-radio">
+        <input type="radio" name="tempo" value="mais5">
+        <div class="opcao-label">
+          <div class="opcao-box"></div>
+          <div class="opcao-texto">
+            <span class="opcao-nome">Mais de 5 anos</span>
+            <span class="opcao-sub">Janela máxima legal de restituição</span>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <div class="alerta" style="margin-top:24px;">
+      <span class="alerta-icone">⚠</span>
+      <div class="alerta-texto">
+        O prazo decadencial corre a partir de cada competência. <strong>Cada mês que passa, uma competência pode prescrever.</strong> A análise imediata preserva o período de restituição.
+      </div>
+    </div>
+
+    <button class="btn-primario" onclick="gerarResultado()">Gerar meu diagnóstico</button>
+    <button class="btn-secundario" onclick="irParaEtapa(3)">Voltar</button>
+  </div>
+
+  <!-- ETAPA 5: RESULTADO -->
+  <div class="etapa" id="etapa-resultado">
+    <div id="conteudo-resultado"></div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-nome">Camila Arcanjo Advocacia e Consultoria Jurídica</div>
+  <div class="footer-oab">Diagnóstico de caráter informativo e educativo</div>
+</footer>
+
+<script>
+  // DADOS DO USUÁRIO
+  let dados = {};
+
+  function iniciarQuiz() {
+    document.getElementById('hero').style.display = 'none';
+    document.getElementById('quiz').style.display = 'block';
+    document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function atualizarProgresso(etapa) {
+    for (let i = 1; i <= 5; i++) {
+      const el = document.getElementById('prog-' + i);
+      el.classList.remove('ativa', 'concluida');
+      if (i < etapa) el.classList.add('concluida');
+      else if (i === etapa) el.classList.add('ativa');
+    }
+  }
+
+  function irParaEtapa(num) {
+    // Salva dados da etapa atual
+    if (num === 2) {
+      dados.nome = document.getElementById('nome').value;
+      dados.crm = document.getElementById('crm').value;
+      dados.especialidade = document.getElementById('especialidade').value;
+      dados.estado = document.getElementById('estado').value;
+      dados.whatsapp = document.getElementById('whatsapp').value;
+      dados.email = document.getElementById('email').value;
+    }
+
+    if (num === 3) {
+      dados.vinculos = Array.from(document.querySelectorAll('input[name="vinculo"]:checked')).map(i => i.value);
+      if (dados.vinculos.length === 0) {
+        alert('Selecione ao menos um tipo de vínculo para continuar.');
+        return;
+      }
+      // Mostra blocos condicionais
+      document.getElementById('bloco-clt').classList.toggle('visivel', dados.vinculos.includes('clt'));
+      document.getElementById('bloco-coop').classList.toggle('visivel', dados.vinculos.includes('cooperativa'));
+      document.getElementById('bloco-pj').classList.toggle('visivel', dados.vinculos.includes('pj'));
+    }
+
+    // Oculta todas as etapas
+    document.querySelectorAll('.etapa').forEach(e => e.classList.remove('ativa'));
+    document.getElementById('etapa-' + num).classList.add('ativa');
+    atualizarProgresso(num);
+    window.scrollTo({ top: document.getElementById('quiz').offsetTop - 80, behavior: 'smooth' });
+  }
+
+  function calcularResultado() {
+    dados.vinculos = dados.vinculos || [];
+    const temCLT = dados.vinculos.includes('clt');
+    const temCoop = dados.vinculos.includes('cooperativa');
+    const temPJ = dados.vinculos.includes('pj');
+    const temConcurso = dados.vinculos.includes('concurso');
+
+    const qtdCLT = document.querySelector('input[name="qtd_clt"]:checked')?.value || '1';
+    const tetoCLT = document.querySelector('input[name="teto_clt"]:checked')?.value || 'nao';
+    const coopForma = document.querySelector('input[name="coop_forma"]:checked')?.value || '';
+    const pjCLT = document.querySelector('input[name="pj_clt"]:checked')?.value || 'nao';
+    const tempo = document.querySelector('input[name="tempo"]:checked')?.value || 'menos1';
+
+    dados.qtdCLT = qtdCLT;
+    dados.tetoCLT = tetoCLT;
+    dados.coopForma = coopForma;
+    dados.pjCLT = pjCLT;
+    dados.tempo = tempo;
+
+    // LÓGICA DE PONTUAÇÃO
+    let pontos = 0;
+    let fatores = [];
+    let alertas = [];
+
+    // CLT múltiplos vínculos
+    if (temCLT && (qtdCLT === '2' || qtdCLT === '3+')) {
+      pontos += 40;
+      fatores.push({ icone: '⚖', titulo: 'Múltiplos vínculos CLT detectados', sub: 'Cada empregador desconta como se fosse o único. Há risco concreto de retenção acima do teto.' });
+    } else if (temCLT && qtdCLT === '1') {
+      pontos += 5;
+      alertas.push('Vínculo CLT único — a tese de bitributação exige múltiplas fontes pagadoras simultâneas.');
+    }
+
+    // Teto CLT
+    if (temCLT && tetoCLT === 'sim') {
+      pontos += 25;
+      fatores.push({ icone: '📊', titulo: 'Remuneração acima do teto previdenciário', sub: 'A soma dos salários ultrapassa o limite legal de contribuição. Excesso retido é passível de restituição.' });
+    }
+
+    // Cooperativa como PF
+    if (temCoop && coopForma === 'pf') {
+      pontos += 20;
+      fatores.push({ icone: '🏥', titulo: 'Retenção de cooperativa como Pessoa Física', sub: 'Retenção de 20% sobre repasses combinada com outros vínculos pode gerar excesso previdenciário.' });
+    }
+
+    // PJ + CLT/Concurso
+    if (temPJ && pjCLT === 'sim') {
+      pontos += 20;
+      fatores.push({ icone: '📋', titulo: 'PJ com vínculo formal simultâneo', sub: 'A coexistência de PJ com CLT ou RPPS pode configurar contribuição duplicada.' });
+    }
+
+    // Concurso público
+    if (temConcurso) {
+      pontos += 10;
+      fatores.push({ icone: '🏛', titulo: 'Regime próprio (RPPS) identificado', sub: 'Vínculos RPPS possuem regras específicas que podem interagir com outros regimes.' });
+    }
+
+    // Tempo
+    if (tempo === 'mais5') { pontos += 15; }
+    else if (tempo === '3a5') { pontos += 10; }
+    else if (tempo === '1a3') { pontos += 5; }
+
+    // Define cenário
+    let cenario;
+    if (pontos >= 60) cenario = 'positivo';
+    else if (pontos >= 25) cenario = 'parcial';
+    else cenario = 'negativo';
+
+    return { pontos, cenario, fatores, alertas, tempo };
+  }
+
+  function formatarTempo(tempo) {
+    const map = { menos1: 'Menos de 1 ano', '1a3': 'Entre 1 e 3 anos', '3a5': 'Entre 3 e 5 anos', mais5: 'Mais de 5 anos' };
+    return map[tempo] || tempo;
+  }
+
+  function formatarVinculos(vinculos) {
+    const map = { clt: 'CLT', cooperativa: 'Cooperativa médica', pj: 'Pessoa Jurídica', concurso: 'Concurso público' };
+    return vinculos.map(v => map[v] || v).join(', ');
+  }
+
+  function gerarResultado() {
+    const r = calcularResultado();
+    const data = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+
+    let html = '';
+
+    if (r.cenario === 'positivo') {
+
+      const waMensagem = encodeURIComponent(
+        `Olá, Camila! Acabei de fazer o diagnóstico fiscal no site e gostaria de conversar sobre o meu caso.\n\nNome: ${dados.nome}\nCRM: ${dados.crm}\nEspecialidade: ${dados.especialidade}\nVínculos: ${formatarVinculos(dados.vinculos)}\nTempo: ${formatarTempo(dados.tempo)}`
+      );
+
+      html = `
+        <div class="resultado-container">
+          <div class="resultado-badge positivo">
+            <span>◆</span>
+            Alto Potencial Identificado
+          </div>
+          <h2 class="resultado-titulo">
+            Seu perfil indica<br><em>hipótese jurídica</em><br>a ser avaliada.
+          </h2>
+          <p class="resultado-desc">
+            A combinação de vínculos que você descreveu apresenta características compatíveis com retenção previdenciária acima do teto legal. O próximo passo é uma auditoria técnica do seu histórico de contracheques.
+          </p>
+
+          <div class="relatorio">
+            <div class="relatorio-header">
+              <div class="relatorio-titulo">Relatório de Diagnóstico</div>
+              <div class="relatorio-data">${data}</div>
+            </div>
+
+            <div class="relatorio-secao">
+              <div class="relatorio-secao-titulo">Dados do Profissional</div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Nome</span>
+                <span class="relatorio-valor">${dados.nome || 'Não informado'}</span>
+              </div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">CRM</span>
+                <span class="relatorio-valor">${dados.crm || 'Não informado'}</span>
+              </div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Especialidade</span>
+                <span class="relatorio-valor">${dados.especialidade || 'Não informado'}</span>
+              </div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Estado</span>
+                <span class="relatorio-valor">${dados.estado || 'Não informado'}</span>
+              </div>
+            </div>
+
+            <div class="relatorio-secao">
+              <div class="relatorio-secao-titulo">Perfil de Vínculos</div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Tipos de vínculo</span>
+                <span class="relatorio-valor">${formatarVinculos(dados.vinculos)}</span>
+              </div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Tempo de atuação</span>
+                <span class="relatorio-valor">${formatarTempo(dados.tempo)}</span>
+              </div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Potencial identificado</span>
+                <span class="relatorio-valor destaque"><span class="status-tag alto">Alto</span></span>
+              </div>
+            </div>
+
+            ${r.fatores.length > 0 ? `
+            <div class="relatorio-secao">
+              <div class="relatorio-secao-titulo">Fatores Identificados no Diagnóstico</div>
+              ${r.fatores.map(f => `
+                <div class="analise-item">
+                  <div class="analise-icone">${f.icone}</div>
+                  <div class="analise-texto">
+                    <div class="analise-titulo-item">${f.titulo}</div>
+                    <div class="analise-sub">${f.sub}</div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>` : ''}
+
+            <div class="relatorio-secao">
+              <div class="relatorio-secao-titulo">Próximo Passo Recomendado</div>
+              <div class="analise-item">
+                <div class="analise-icone">📁</div>
+                <div class="analise-texto">
+                  <div class="analise-titulo-item">Auditoria do histórico de contracheques</div>
+                  <div class="analise-sub">A análise técnica dos seus documentos previdenciários dos últimos anos irá confirmar ou afastar a hipótese jurídica identificada neste diagnóstico. O processo é sigiloso e sem compromisso de contratação.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a class="btn-whatsapp" href="https://wa.me/55${(dados.whatsapp || '').replace(/\D/g,'')}?text=${waMensagem}" target="_blank">
+            Enviar diagnóstico à Camila Arcanjo
+          </a>
+
+          <div class="nota-legal">
+            Este diagnóstico é de caráter exclusivamente informativo e educativo. A existência de hipótese jurídica depende de análise técnica individualizada dos documentos do profissional. Nenhuma afirmação neste relatório constitui promessa de resultado ou captação de clientela. Em conformidade com o Provimento 205/2021 da OAB.
+          </div>
+        </div>
+      `;
+
+    } else if (r.cenario === 'parcial') {
+
+      const waMensagem = encodeURIComponent(
+        `Olá, Camila! Fiz o diagnóstico fiscal e meu resultado foi potencial parcial. Gostaria de entender melhor o meu caso.\n\nNome: ${dados.nome}\nCRM: ${dados.crm}\nVínculos: ${formatarVinculos(dados.vinculos)}`
+      );
+
+      html = `
+        <div class="resultado-container">
+          <div class="resultado-badge parcial">
+            <span>◆</span>
+            Análise Recomendada
+          </div>
+          <h2 class="resultado-titulo">
+            Seu perfil apresenta<br><em>pontos que merecem</em><br>uma análise mais detalhada.
+          </h2>
+          <p class="resultado-desc">
+            As respostas indicam uma configuração que não é conclusiva apenas com as informações do diagnóstico. Há elementos que podem configurar excesso de retenção, mas a confirmação depende da análise dos seus documentos.
+          </p>
+
+          <div class="relatorio">
+            <div class="relatorio-header">
+              <div class="relatorio-titulo">Relatório de Diagnóstico</div>
+              <div class="relatorio-data">${data}</div>
+            </div>
+
+            <div class="relatorio-secao">
+              <div class="relatorio-secao-titulo">Dados do Profissional</div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Nome</span>
+                <span class="relatorio-valor">${dados.nome || 'Não informado'}</span>
+              </div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">CRM</span>
+                <span class="relatorio-valor">${dados.crm || 'Não informado'}</span>
+              </div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Vínculos</span>
+                <span class="relatorio-valor">${formatarVinculos(dados.vinculos)}</span>
+              </div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Potencial identificado</span>
+                <span class="relatorio-valor"><span class="status-tag medio">Inconclusivo</span></span>
+              </div>
+            </div>
+
+            ${r.fatores.length > 0 ? `
+            <div class="relatorio-secao">
+              <div class="relatorio-secao-titulo">Elementos que Requerem Verificação</div>
+              ${r.fatores.map(f => `
+                <div class="analise-item">
+                  <div class="analise-icone">${f.icone}</div>
+                  <div class="analise-texto">
+                    <div class="analise-titulo-item">${f.titulo}</div>
+                    <div class="analise-sub">${f.sub}</div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>` : ''}
+
+            ${r.alertas.length > 0 ? `
+            <div class="relatorio-secao">
+              <div class="relatorio-secao-titulo">Observações</div>
+              ${r.alertas.map(a => `
+                <div class="analise-item">
+                  <div class="analise-icone">ℹ</div>
+                  <div class="analise-texto">
+                    <div class="analise-sub">${a}</div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>` : ''}
+          </div>
+
+          <a class="btn-whatsapp" href="https://wa.me/55${(dados.whatsapp || '').replace(/\D/g,'')}?text=${waMensagem}" target="_blank">
+            Conversar sobre meu caso
+          </a>
+
+          <div class="nota-legal">
+            Este diagnóstico é de caráter exclusivamente informativo e educativo. A existência de hipótese jurídica depende de análise técnica individualizada. Em conformidade com o Provimento 205/2021 da OAB.
+          </div>
+        </div>
+      `;
+
+    } else {
+
+      html = `
+        <div class="resultado-container">
+          <div class="resultado-badge negativo">
+            <span>◆</span>
+            Dentro do Limite Legal
+          </div>
+          <h2 class="resultado-titulo">
+            No momento, seu perfil<br>não indica retenção<br><em>acima do teto.</em>
+          </h2>
+          <p class="resultado-desc">
+            Com base nas informações fornecidas, seus vínculos atuais não apresentam as características que configuram bitributação previdenciária. Isso significa que a contribuição provavelmente está sendo feita dentro dos limites legais.
+          </p>
+
+          <div class="relatorio">
+            <div class="relatorio-header">
+              <div class="relatorio-titulo">Relatório de Diagnóstico</div>
+              <div class="relatorio-data">${data}</div>
+            </div>
+
+            <div class="relatorio-secao">
+              <div class="relatorio-secao-titulo">Dados do Profissional</div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Nome</span>
+                <span class="relatorio-valor">${dados.nome || 'Não informado'}</span>
+              </div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">CRM</span>
+                <span class="relatorio-valor">${dados.crm || 'Não informado'}</span>
+              </div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Vínculos</span>
+                <span class="relatorio-valor">${formatarVinculos(dados.vinculos)}</span>
+              </div>
+              <div class="relatorio-linha">
+                <span class="relatorio-chave">Resultado</span>
+                <span class="relatorio-valor"><span class="status-tag baixo">Sem indicativo</span></span>
+              </div>
+            </div>
+
+            <div class="relatorio-secao">
+              <div class="relatorio-secao-titulo">O que isso significa</div>
+              <div class="analise-item">
+                <div class="analise-icone">✓</div>
+                <div class="analise-texto">
+                  <div class="analise-titulo-item">Contribuição dentro do teto legal</div>
+                  <div class="analise-sub">O perfil descrito não apresenta múltiplas fontes pagadoras simultâneas que configurem retenção acima do limite previdenciário.</div>
+                </div>
+              </div>
+              <div class="analise-item">
+                <div class="analise-icone">📅</div>
+                <div class="analise-texto">
+                  <div class="analise-titulo-item">Situação pode mudar com novos vínculos</div>
+                  <div class="analise-sub">Se você assumir um novo plantão, mudar de regime ou sua remuneração se alterar, o diagnóstico pode ter um resultado diferente. Guarde seu contato para uma nova avaliação.</div>
+                </div>
+              </div>
+              <div class="analise-item">
+                <div class="analise-icone">⚡</div>
+                <div class="analise-texto">
+                  <div class="analise-titulo-item">Reforma Tributária em andamento</div>
+                  <div class="analise-sub">As mudanças legislativas de 2025 e 2026 podem impactar a tributação de médicos com PJ ou cooperativa. Vale manter acompanhamento preventivo.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-reiniciar" onclick="reiniciar()">Refazer o diagnóstico com outros dados</button>
+
+          <div class="nota-legal">
+            Este diagnóstico é de caráter exclusivamente informativo e educativo. A ausência de indicativo neste formulário não substitui análise técnica individualizada. Em conformidade com o Provimento 205/2021 da OAB.
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById('conteudo-resultado').innerHTML = html;
+    document.querySelectorAll('.etapa').forEach(e => e.classList.remove('ativa'));
+    document.getElementById('etapa-resultado').classList.add('ativa');
+    atualizarProgresso(5);
+    window.scrollTo({ top: document.getElementById('quiz').offsetTop - 80, behavior: 'smooth' });
+  }
+
+  function reiniciar() {
+    dados = {};
+    document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(i => i.checked = false);
+    document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(i => i.value = '');
+    document.querySelectorAll('.bloco-condicional').forEach(b => b.classList.remove('visivel'));
+    irParaEtapa(1);
+    document.getElementById('hero').style.display = 'flex';
+    document.getElementById('quiz').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
