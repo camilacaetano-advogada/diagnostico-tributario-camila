@@ -1426,7 +1426,7 @@
             </div>
           </div>
 
-          <a class="btn-whatsapp" href="https://wa.me/55${(dados.whatsapp || '').replace(/\D/g,'')}?text=${waMensagem}" target="_blank">
+          <a class="btn-whatsapp" href="https://wa.me/5531984609933?text=${waMensagem}" target="_blank">
             Enviar diagnóstico à Camila Arcanjo
           </a>
 
@@ -1509,7 +1509,7 @@
             </div>` : ''}
           </div>
 
-          <a class="btn-whatsapp" href="https://wa.me/55${(dados.whatsapp || '').replace(/\D/g,'')}?text=${waMensagem}" target="_blank">
+          <a class="btn-whatsapp" href="https://wa.me/5531984609933?text=${waMensagem}" target="_blank">
             Conversar sobre meu caso
           </a>
 
